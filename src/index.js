@@ -1,10 +1,10 @@
 const inputfield = document.getElementById('input-el');
 const submit = document.getElementById('submit');
-const apiURL =  'https://notes-search.pockethost.io/api/collections/notes/records/perPage=100';
+const apiURL =  'https://notes-search.pockethost.io/api/collections/notes/records?perPage=100';
 const newDiv = document.createElement('div');
 newDiv.setAttribute('class','new-div');
 const mainDiv = document.querySelector('.main');
-
+let count = 0;
 
 const fuseOptions = {
     keys: ['Subjects'],
@@ -14,10 +14,12 @@ const fuseOptions = {
 const fuse = new Fuse([], fuseOptions);
 
 async function notesSearch(searchTerm){
-
     const loadingDiv = document.createElement('div');
-    loadingDiv.innerHTML = `<div class="lds-ellipsis"><div></div><div></div><div></div><div>`;
-    mainDiv.appendChild(loadingDiv);
+    if(count === 0){
+        loadingDiv.innerHTML = `<div class="lds-ellipsis"><div></div><div></div><div></div><div>`;
+        mainDiv.appendChild(loadingDiv);
+        count++;
+    }
     const newTerm = searchTerm.toLowerCase();
     const apiResponse = await fetch(apiURL).then((resp)=>{return resp.json()}).then(data => {return data});
     
@@ -41,6 +43,7 @@ async function notesSearch(searchTerm){
     
     loadingDiv.innerHTML = '';
     mainDiv.removeChild(loadingDiv);
+    count = 0;
     
 }
 submit.addEventListener('click', () =>{
@@ -49,6 +52,7 @@ submit.addEventListener('click', () =>{
     notesSearch(searchTerm)
     document.body.appendChild(newDiv)
     console.log('button')
+    
 })
 
 function redirect(url) {
