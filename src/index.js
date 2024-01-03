@@ -1,6 +1,6 @@
 const inputfield = document.getElementById('input-el');
 const submit = document.getElementById('submit');
-const apiURL =  'https://notes-search.pockethost.io/api/collections/notes/records';
+const apiURL =  'https://notes-search.pockethost.io/api/collections/notes/records/perPage=100';
 const newDiv = document.createElement('div');
 newDiv.setAttribute('class','new-div');
 const mainDiv = document.querySelector('.main');
