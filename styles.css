@@ -165,6 +165,7 @@ button span {
     background-color: #15bcdf;
     border-radius: 10px;
     padding: 4px;
+    cursor: pointer;
     transition: all 0.3s ;
 
 }
