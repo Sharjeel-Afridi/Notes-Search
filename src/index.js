@@ -36,7 +36,7 @@ async function notesSearch(searchTerm){
             const notesDiv = document.createElement('div');
             notesDiv.classList.add('notes-div');
             notesDiv.setAttribute('onclick',`redirect('${element.item.notes}')`);
-            notesDiv.innerHTML = `<h3>${element.item.Title}</h3>`;
+            notesDiv.innerHTML = `<span class='title'>${element.item.Title}</span>`;
             newDiv.appendChild(notesDiv);
         });
     }
@@ -58,3 +58,13 @@ submit.addEventListener('click', () =>{
 function redirect(url) {
     window.open(url, '_blank');
 }
+const toggleBtn = document.getElementById('toggle-btn');
+const body = document.body;
+
+toggleBtn.addEventListener('click', function () {
+    console.log('toggle');
+    body.classList.toggle('dark-mode');
+});
+// document.addEventListener('DOMContentLoaded', function () {
+    
+// });
