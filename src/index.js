@@ -43,6 +43,7 @@ async function notesSearch(searchTerm){
     }
     
     loadingDiv.innerHTML = '';
+    newDiv.scrollIntoView({ behavior: 'smooth' });
     mainDiv.removeChild(loadingDiv);
     count = 0;
     
