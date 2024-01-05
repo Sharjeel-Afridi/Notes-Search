@@ -46,6 +46,12 @@ async function notesSearch(searchTerm){
     count = 0;
     
 }
+inputfield.addEventListener("keypress", (event) => {
+    if(event.key === 'Enter'){
+        submit.click()
+    }
+})
+
 submit.addEventListener('click', () =>{
     const searchTerm = inputfield.value;
     newDiv.innerHTML = '';
@@ -65,6 +71,3 @@ toggleBtn.addEventListener('click', function () {
     console.log('toggle');
     body.classList.toggle('dark-mode');
 });
-// document.addEventListener('DOMContentLoaded', function () {
-    
-// });
