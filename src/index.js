@@ -15,7 +15,8 @@ const fuse = new Fuse([], fuseOptions);
 
 async function notesSearch(searchTerm){
     const loadingDiv = document.createElement('div');
-    if(count === 0){
+    loadingDiv.setAttribute('id','loading-div');
+    if(count === 0 && !mainDiv.contains(loadingDiv)){
         loadingDiv.innerHTML = `<div class="lds-ellipsis"><div></div><div></div><div></div><div>`;
         mainDiv.appendChild(loadingDiv);
         count++;
