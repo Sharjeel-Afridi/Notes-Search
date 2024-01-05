@@ -36,7 +36,7 @@ async function notesSearch(searchTerm){
             const notesDiv = document.createElement('div');
             notesDiv.classList.add('notes-div');
             notesDiv.setAttribute('onclick',`redirect('${element.item.notes}')`);
-            notesDiv.innerHTML = `<span class='title'>${element.item.Title}</span>`;
+            notesDiv.innerHTML = `<span class='title'>${element.item.Title}</span><span class="year">Year: ${element.item.year}</span>`;
             newDiv.appendChild(notesDiv);
         });
     }
@@ -70,7 +70,7 @@ const body = document.body;
 toggleBtn.addEventListener('click', function () {
     console.log('toggle');
     body.classList.toggle('dark-mode');
-    
+
     if (body.classList.contains('dark-mode')) {
         toggleBtn.innerHTML = `<img src="./sun.png">`;
     } else {
