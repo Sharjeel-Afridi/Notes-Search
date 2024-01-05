@@ -44,7 +44,7 @@ async function notesSearch(searchTerm){
     
     loadingDiv.innerHTML = '';
     newDiv.scrollIntoView({ behavior: 'smooth' });
-    mainDiv.removeChild(loadingDiv);
+    mainDiv.removeChild(document.getElementById('loading-div'));
     count = 0;
     
 }
