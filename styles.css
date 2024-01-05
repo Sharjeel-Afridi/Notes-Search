@@ -191,14 +191,21 @@ body{
 
 .toggle-btn{
   position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 2rem;
   width: 2rem;
   top: 30px;
   right: 10px;
   border-radius: 50%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
 }
-
-
+img{
+  height: 30px;
+}
 
 
 /* These are style for loading animation */

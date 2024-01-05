@@ -70,4 +70,10 @@ const body = document.body;
 toggleBtn.addEventListener('click', function () {
     console.log('toggle');
     body.classList.toggle('dark-mode');
+    
+    if (body.classList.contains('dark-mode')) {
+        toggleBtn.innerHTML = `<img src="./sun.png">`;
+    } else {
+        toggleBtn.innerHTML = `<img src="./moon.png">`;
+    }
 });
