@@ -16,7 +16,6 @@ body{
     align-items: center;
     flex-direction: column;
     gap: 50px;
-    overflow-x: hidden;
 }
 .title{
     font-size: 3rem;
@@ -174,7 +173,7 @@ body{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid #212121;
+  border: 1px solid black;
   width: 11.875em;
   height: 13.875em;
   padding: 1rem;
@@ -288,19 +287,20 @@ img{
 
 /* DARK  MODE */
 .dark-mode {
-  background-color: #212121;
+  background-color: black;
   color: white;
 }
 .dark-mode input{
   color: white;
 }
 .dark-mode .main button{
-  background-color: #212121;
+  background-color: black;
   color: white;
 }
-.dark-mode .main button:hover{
-  color: #212121;
+.dark-mode .main button::before{
+  background-color: #ffbb763f;
 }
+
 
 .dark-mode .lds-ellipsis div{
   background: white;
