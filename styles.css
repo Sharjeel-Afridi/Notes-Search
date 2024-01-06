@@ -150,6 +150,16 @@ body{
   position: relative;
 }
 
+.total-div{
+  display: flex;
+  justify-content: start;
+  height: 2rem;
+  margin-left: 2rem ;
+}
+.total-rsults{
+  font-weight: 100;
+}
+
 .new-div {
   display: flex;
   flex-wrap: wrap;

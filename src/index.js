@@ -8,7 +8,8 @@ let count = 0;
 
 const fuseOptions = {
     keys: ['Subjects'],
-    threshold: 0.5
+    threshold: 0.5,
+    distance: 800,
 };
 
 const fuse = new Fuse([], fuseOptions);
@@ -28,16 +29,33 @@ async function notesSearch(searchTerm){
 
     
     const results = fuse.search(newTerm);
-    // const matchingAnswers = results.map(el => el.item.notes);
-    // console.log(`Search results for "${searchTerm}":`,matchingAnswers);
-    if (results.length === 0){
+    const sortedResults = results.sort();
+
+    const totalResults = document.createElement('div');
+    totalResults.classList.add('total-div');
+    totalResults.innerHTML = `<span class="total-results">Total Results: ${results.length}</span>`
+    body.insertBefore(totalResults, newDiv);
+
+    if (sortedResults.length === 0){
         newDiv.innerHTML = `<h1>No Results Founds!!</h1>`;
     }else{
-        results.forEach(element => {
+        sortedResults.forEach(element => {
             const notesDiv = document.createElement('div');
             notesDiv.classList.add('notes-div');
             notesDiv.setAttribute('onclick',`redirect('${element.item.notes}')`);
-            notesDiv.innerHTML = `<span class='title'>${element.item.Title}</span><span class="year">Year: ${element.item.year}</span>`;
+            
+            const titleSpan = document.createElement('span');
+            titleSpan.classList.add('title');
+            titleSpan.textContent = element.item.Title;
+
+            
+            const yearSpan = document.createElement('span');
+            yearSpan.classList.add('year');
+            yearSpan.textContent = `Year: ${element.item.year}`;
+
+            
+            notesDiv.appendChild(titleSpan);
+            notesDiv.appendChild(yearSpan);
             newDiv.appendChild(notesDiv);
         });
     }
