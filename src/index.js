@@ -3,6 +3,8 @@ const submit = document.getElementById('submit');
 const apiURL =  'https://notes-search.pockethost.io/api/collections/notes/records?perPage=100';
 const newDiv = document.createElement('div');
 newDiv.setAttribute('class','new-div');
+const totalResults = document.createElement('div');
+totalResults.classList.add('total-div');
 const mainDiv = document.querySelector('.main');
 let count = 0;
 
@@ -31,8 +33,7 @@ async function notesSearch(searchTerm){
     const results = fuse.search(newTerm);
     const sortedResults = results.sort();
 
-    const totalResults = document.createElement('div');
-    totalResults.classList.add('total-div');
+    
     totalResults.innerHTML = `<span class="total-results">Total Results: ${results.length}</span>`
     body.insertBefore(totalResults, newDiv);
 
@@ -75,6 +76,7 @@ inputfield.addEventListener("keypress", (event) => {
 submit.addEventListener('click', () =>{
     const searchTerm = inputfield.value;
     newDiv.innerHTML = '';
+    totalResults.innerHTML = '';
     notesSearch(searchTerm)
     document.body.appendChild(newDiv)
     console.log('button')
